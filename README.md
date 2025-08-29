@@ -12,7 +12,24 @@ A modern, web-based dashboard for training, evaluating, and utilizing a machine 
 
 Here is a preview of the "Predict User" page, showcasing the clean UI, interactive data visualization, and clear prediction output.
 
-*(**Note**: You should replace this placeholder image with a screenshot of your own running application!)*
+<table>
+  <tr>
+    <td align="center"><strong>Predict Single User</strong></td>
+    <td align="center"><strong>Predict All Users</strong></td>
+    <td align="center"><strong>Add New User</strong></td>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://github.com/jejo205713/neural-credit-scoring/raw/main/Images/Predict-single-user.png" alt="Predict Single User Page" />
+    </td>
+    <td>
+      <img src="https://github.com/jejo205713/neural-credit-scoring/raw/main/Images/Predit-all.png" alt="Predict All Users Page" />
+    </td>
+    <td>
+      <img src="https://github.com/jejo205713/neural-credit-scoring/raw/main/Images/Add-new-user.png" alt="Add New User Page" />
+    </td>
+  </tr>
+</table>
 
 ---
 
