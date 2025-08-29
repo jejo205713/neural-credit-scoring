@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block title %}Predict User{% endblock %}
+
+{% block content %}
+<div class="header">
+    <h1>Predict Risk for a Single User</h1>
+    <p>Select a user to see their risk prediction, probability, and a feature comparison chart.</p>
+</div>
+
+{# This card contains the form to select a user #}
+<div class="card">
+    <form action="{{ url_for('predict_user_route') }}" method="post" class="form-container">
+        <div class="form-group">
+            <label for="username">Select Username</label>
+            <select name="username" id="username" required>
+                {# This loop populates the dropdown with users from your CSV #}
+                {% for user in users %}
+                    <option value="{{ user }}">{{ user }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn">Predict</button>
+    </form>
+</div>
+
+{# --- THIS IS THE CRITICAL SECTION THAT WAS MISSING OR INCORRECT --- #}
+{# It only displays if the Python script sends back prediction_made = True #}
+{% if prediction_made %}
+
+    {# Card to display the text result (e.g., "Low Risk") #}
+    <div class="card">
+        <div class="flash flash-{{ flash_cat }}">
+            <strong>{{ username }}</strong> is classified as <strong>{{ pred_text }}</strong> with a confidence of <strong>{{ risk_prob }}</strong>.
+        </div>
+    </div>
+
+    {# Card to hold the interactive graph #}
+    <div class="plot-card" id="user-comp-plot"></div>
+
+    {# JavaScript to render the Plotly graph #}
+    <script>
+        // The Python script passes the graph data as a JSON string
+        var figUserComp = JSON.parse({{ fig_user_comp_json | tojson }});
+        
+        // Plotly uses the data to draw the graph inside the 'user-comp-plot' div
+        Plotly.newPlot('user-comp-plot', figUserComp.data, figUserComp.layout);
+    </script>
+
+{% endif %}
+{# --- END OF THE CRITICAL SECTION --- #}
+
+{% endblock %}

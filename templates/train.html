@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{# This is the one and only title block #}
+{% block title %}Train Model{% endblock %}
+
+{# This is the content block that wraps the rest of the page #}
+{% block content %}
+<div class="header">
+    <h1>Train Model</h1>
+    <p>Train a new Random Forest classifier. After training, analytical plots will be displayed below.</p>
+</div>
+
+<div class="card">
+    <form action="{{ url_for('train') }}" method="post">
+        <button type="submit" class="btn">Start Training</button>
+    </form>
+</div>
+
+{% if acc %}
+<div class="plot-container">
+    <div class="plot-card" id="importance-plot"></div>
+    <div class="plot-card" id="cm-plot"></div>
+</div>
+
+<script>
+    var figImportance = JSON.parse({{ fig_importance_json | tojson }});
+    Plotly.newPlot('importance-plot', figImportance.data, figImportance.layout);
+
+    var figCm = JSON.parse({{ fig_cm_json | tojson }});
+    Plotly.newPlot('cm-plot', figCm.data, figCm.layout);
+</script>
+{% endif %}
+
+{% endblock %}

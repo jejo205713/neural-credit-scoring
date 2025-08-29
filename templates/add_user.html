@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block title %}Add New User{% endblock %}
+{% block content %}
+<div class="header">
+    <h1>Add New User</h1>
+    <p>Enter user details. The data will be added to the production dataset.</p>
+</div>
+<div class="card">
+    <form action="{{ url_for('add_user_route') }}" method="post" class="form-container">
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="avg_calls">Avg Weekly Calls</label>
+                <input type="number" id="avg_calls" name="avg_calls" step="1" value="0" required>
+            </div>
+            <div class="form-group">
+                <label for="sms_ratio">SMS/Call Ratio</label>
+                <input type="number" id="sms_ratio" name="sms_ratio" step="0.01" value="0.0" required>
+            </div>
+            <div class="form-group">
+                <label for="finance_hours">Finance App Hours</label>
+                <input type="number" id="finance_hours" name="finance_hours" step="0.1" value="0.0" required>
+            </div>
+            <div class="form-group">
+                <label for="recharge_freq">Recharge Frequency</label>
+                <input type="number" id="recharge_freq" name="recharge_freq" step="1" value="0" required>
+            </div>
+            <div class="form-group">
+                <label for="ontime_payments">On-time Payments</label>
+                <input type="number" id="ontime_payments" name="ontime_payments" step="1" value="0" required>
+            </div>
+            <div class="form-group">
+                <label for="upi_txn">UPI Txn Count</label>
+                <input type="number" id="upi_txn" name="upi_txn" step="1" value="0" required>
+            </div>
+            <div class="form-group">
+                <label for="ecommerce_spending">E-commerce Spending</label>
+                <input type="number" id="ecommerce_spending" name="ecommerce_spending" step="0.01" value="0.0" required>
+            </div>
+            <div class="form-group">
+                <label for="beh_score">Behavioral Score (0.0 to 1.0)</label>
+                <input type="number" id="beh_score" name="beh_score" step="0.01" min="0" max="1" value="0.5" required>
+            </div>
+            <div class="form-group">
+                <label for="label">Label (1=Low Risk, 0=High Risk)</label>
+                <input type="number" id="label" name="label" min="0" max="1" step="1" value="1" required>
+            </div>
+        </div>
+        <button type="submit" class="btn">Add User</button>
+    </form>
+</div>
+{% endblock %}

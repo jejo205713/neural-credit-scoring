@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block title %}Overview{% endblock %}
+{% block content %}
+<div class="header">
+    <h1>Credit Risk Analysis Dashboard</h1>
+    <p>
+        Welcome to the CreditRisk AI platform. This system leverages machine learning to analyze user data
+        and predict creditworthiness. Use the tools in the sidebar to train models, evaluate individual
+        user profiles, and manage the dataset.
+    </p>
+</div>
+
+<div class="card">
+    <h3>Project Workflow</h3>
+    <p style="color: var(--text-secondary); font-size: 1rem;">
+        <strong>1. Data Management:</strong> Add new user data to the production dataset via the 'Add User' page. <br>
+        <strong>2. Model Training:</strong> Use the 'Train Model' page to train a Random Forest classifier on the latest dataset. This generates analytical graphs on feature importance and model performance.<br>
+        <strong>3. Prediction & Analysis:</strong> Evaluate single users with the 'Predict User' tool for a detailed profile analysis, or run batch predictions on the entire dataset with 'Predict All'.
+    </p>
+</div>
+
+<div class="card">
+    <h3>Current Model Status</h3>
+    <p style="font-size: 1.5rem; color: var(--accent-color);">{{ accuracy }}</p>
+</div>
+{% endblock %}

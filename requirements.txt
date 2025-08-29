@@ -1,0 +1,38 @@
+# -------------------------
+# Web Application Framework
+# -------------------------
+flask
+plotly
+
+# -------------------------
+# Core ML + Data
+# -------------------------
+numpy>=1.23.0
+pandas>=1.5.0
+scikit-learn>=1.1.0
+torch>=2.0.0
+torchvision>=0.15.0
+
+# -------------------------
+# Graph Embeddings
+# -------------------------
+networkx>=3.0
+node2vec>=0.4.6
+
+# -------------------------
+# Explainability
+# -------------------------
+shap>=0.42.1
+
+# -------------------------
+# Optional for LLM-like explanation templates
+# (No heavy model, so no HuggingFace transformers required for now)
+# If you later integrate a real mini-LLM, uncomment the following lines:
+# -------------------------
+# transformers>=4.40.0
+# sentencepiece>=0.1.99
+
+# -------------------------
+# Utilities
+# -------------------------
+tqdm>=4.65.0

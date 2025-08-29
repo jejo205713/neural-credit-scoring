@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block title %}Predict All Users{% endblock %}
+{% block content %}
+<div class="header">
+    <h1>All User Predictions</h1>
+    <p>The entire production dataset has been processed by the model.</p>
+</div>
+
+<div class="table-container">
+    <table class="styled-table">
+        <thead>
+            <tr>
+                {% for header in headers %}
+                <th>{{ header }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in table_data %}
+            <tr>
+                {% for header in headers %}
+                <td>
+                    {% if header == 'Prediction' %}
+                        {% if row[header] == 'Low Risk' %}
+                            <span class="tag tag-low-risk">{{ row[header] }}</span>
+                        {% else %}
+                            <span class="tag tag-high-risk">{{ row[header] }}</span>
+                        {% endif %}
+                    {% else %}
+                        {{ row[header] }}
+                    {% endif %}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
